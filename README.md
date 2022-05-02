@@ -1,2 +1,1 @@
-# aws
-AWS
+# AWS

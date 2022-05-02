@@ -1,0 +1,52 @@
+{
+	"name": "@codetailor/aws",
+	"version": "0.1.0",
+	"description": "AWS",
+	"keywords": [
+		"aws"
+	],
+	"main": "index.js",
+	"files": [
+		"dist/**/*.js"
+	],
+	"scripts": {
+		"format": "prettier --write \"src/**/*.ts\" \"dist/**/*.js\"",
+		"lint": "eslint . --fix",
+		"build": "tsc",
+		"test": "ts-node node_modules/tape/bin/tape test/**/*.test.ts | tap-spec",
+		"dev": "ts-node src/index",
+		"start": "node dist/index",
+		"prepare": "npm run build",
+		"prepublishOnly": "npm test && npm run lint",
+		"preversion": "npm run lint",
+		"version": "npm run format && git add -A src",
+		"postversion": "git push && git push --tags"
+	},
+	"devDependencies": {
+		"@tsconfig/node16": "^1.0.2",
+		"@types/node": "^17.0.30",
+		"@types/tape": "^4.13.2",
+		"@typescript-eslint/eslint-plugin": "^5.21.0",
+		"@typescript-eslint/parser": "^5.21.0",
+		"eslint": "^8.14.0",
+		"tap-spec": "^2.2.2",
+		"tape": "^5.5.3",
+		"ts-node": "^10.7.0",
+		"typescript": "^4.6.4"
+	},
+	"author": "Ricardo Nunes <ricardonunesdev@gmail.com> (https://ricardonunes.dev/)",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/codetailor/aws.git"
+	},
+	"bugs": {
+		"url": "https://github.com/codetailor/aws/issues"
+	},
+	"homepage": "https://github.com/codetailor/aws#readme",
+	"license": "MIT",
+	"dependencies": {
+		"aws-sdk": "^2.1125.0",
+		"dotenv": "^16.0.0",
+		"prettier": "^2.6.2"
+	}
+}
