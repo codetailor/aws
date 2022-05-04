@@ -15,7 +15,7 @@
 		"build": "tsc",
 		"test": "ts-node node_modules/tape/bin/tape test/**/*.test.ts | tap-spec",
 		"dev": "ts-node src/index",
-		"start": "node dist/index",
+		"start": "node dist/src/index",
 		"prepare": "npm run build",
 		"prepublishOnly": "npm test && npm run lint",
 		"preversion": "npm run lint",
