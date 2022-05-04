@@ -1,5 +1,5 @@
 import AWS from 'aws-sdk';
-import { S3Client, PutObjectCommand, GetObjectCommand, } from '@aws-sdk/client-s3';
+import { S3Client, PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 import type { GetObjectCommandInput, PutObjectCommandInput, PutObjectCommandOutput } from '@aws-sdk/client-s3';
 import fs from 'fs';
 
@@ -19,16 +19,14 @@ export function downloadFile(bucket: string, key: string, localFilePath: string)
 
 		const s3Params: GetObjectCommandInput = {
 			Bucket: bucket,
-			Key: key
+			Key: key,
 		};
 
 		const command = new GetObjectCommand(s3Params);
 
 		S3.send(command)
-			.then(res => {
-				res.Body.pipe(localWriteStream)
-					.on('close', resolve)
-					.on('error', reject);
+			.then((res) => {
+				res.Body.pipe(localWriteStream).on('close', resolve).on('error', reject);
 			})
 			.catch(reject);
 	});
@@ -43,13 +41,11 @@ export function uploadFile(bucket: string, key: string, tags: Tag[], localFilePa
 			Bucket: bucket,
 			Key: key,
 			Body: localReadStream,
-			Tagging: tags.map(tag => tag.key + '=' + tag.value).join('&')
+			Tagging: tags.map((tag) => tag.key + '=' + tag.value).join('&'),
 		};
 
 		const command = new PutObjectCommand(s3Params);
 
-		S3.send(command)
-			.then(resolve)
-			.catch(reject);
+		S3.send(command).then(resolve).catch(reject);
 	});
 }
