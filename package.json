@@ -1,11 +1,11 @@
 {
 	"name": "@codetailor/aws",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "AWS",
 	"keywords": [
 		"aws"
 	],
-	"main": "index.js",
+	"main": "dist/src/index.js",
 	"files": [
 		"dist/**/*.js"
 	],
